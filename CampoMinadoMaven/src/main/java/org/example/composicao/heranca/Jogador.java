@@ -1,6 +1,6 @@
 package org.example.composicao.heranca;
 
-import static oo.composicao.heranca.Direcao.*;
+//import static oo.composicao.heranca.Direcao.*;
 
 //CONTRUTOR
 public class Jogador {
