@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import static jbdc.FabricaConexao.getConexao;
+
 public class AlteraNomePessoa {
     public static void main(String[] args) throws SQLException {
         Scanner sc = new Scanner(System.in);
@@ -14,12 +16,13 @@ public class AlteraNomePessoa {
         int codigo = sc.nextInt();
 
         String select = "SELECT * FROM pessoas WHERE codigo = ?";
-        String uptade = "UPDATE pessoas SET nome = ? WHERE codigo = ?";
+        String updade = "UPDATE pessoas SET nome = ? WHERE codigo = ?";
 
-        Connection conexao = FabricaConexao.getConexao();
+        Connection conexao = getConexao();
         PreparedStatement stmt = conexao.prepareStatement(select);
         stmt.setInt(1, codigo);
         ResultSet r = stmt.executeQuery();
+
 
         if (r.next()) {
             Pessoa p = new Pessoa(r.getInt(1), r.getString(2));
@@ -33,7 +36,7 @@ public class AlteraNomePessoa {
 
             stmt.close();
 
-            stmt = conexao.prepareStatement(uptade);
+            stmt = conexao.prepareStatement(select);
             stmt.setString(1, novoNome);
             stmt.setInt(2, codigo);
             stmt.execute();
