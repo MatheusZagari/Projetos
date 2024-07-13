@@ -3,7 +3,7 @@ package modelo.basico;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "produto")
+@Table(name = "produto", schema = "curso_java")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +11,8 @@ public class Produto {
 
     @Column(name = "prod_nome", length = 200, nullable = false)
     private String nome;
+
+    @Column(name = "prod_preco", nullable = false, precision = 10, scale = 2)
     private double preco;
 
 
