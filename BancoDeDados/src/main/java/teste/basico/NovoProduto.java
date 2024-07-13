@@ -9,5 +9,8 @@ public class NovoProduto {
 
         DAO<Produto> dao = new DAO<>(Produto.class);
         dao.abrirTransacao().incluirAtomico(produto).fecharTransacao().fechar();
+
+        ta gay
     }
 }
+ 
