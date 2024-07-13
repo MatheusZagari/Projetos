@@ -8,9 +8,11 @@ public class NovoProduto {
         Produto produto = new Produto("Caneta", 7.45);
 
         DAO<Produto> dao = new DAO<>(Produto.class);
-        dao.abrirTransacao().incluirAtomico(produto).fecharTransacao().fechar();
-
-        ta gay
+        try {
+            dao.abrirTransacao().incluirAtomico(produto).fecharTransacao().fechar();
+            System.out.println("Produto adicionado com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
- 
