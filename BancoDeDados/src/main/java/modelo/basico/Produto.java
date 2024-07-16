@@ -1,6 +1,7 @@
 package modelo.basico;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "produto", schema = "curso_java")
@@ -46,4 +47,5 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
 }
