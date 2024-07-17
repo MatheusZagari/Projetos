@@ -52,6 +52,10 @@ public class DAO<E> {
         return this.abrirTransacao().incluir(entidade).fecharTransacao();
     }
 
+    public E obterPorId(Long id) {
+        return em.find(classe, id);
+    }
+
     public E obterPorId(Object id) {
         return em.find(classe, id);
     }

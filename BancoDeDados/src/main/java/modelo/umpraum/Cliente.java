@@ -11,6 +11,7 @@ public class Cliente {
     private Long id;
 
     private String nome;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "assento_id", unique = true)
     private Assento assento;
