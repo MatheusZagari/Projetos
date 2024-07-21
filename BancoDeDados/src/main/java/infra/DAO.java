@@ -5,6 +5,7 @@ package infra;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class DAO<E> {
@@ -68,9 +69,23 @@ public class DAO<E> {
         return em.createQuery(jpql, classe).setMaxResults(qtde).setFirstResult(deslocamento).getResultList();
     }
 
+    public List<E> consultar(String nomeConsulta, Object... parametros) {
+        TypedQuery<E> query = em.createNamedQuery(nomeConsulta, classe);
+        for (int i = 0; i < parametros.length; i += 2) {
+            query.setParameter(parametros[i].toString(), parametros[i + 1]);//parâmetros[i] é o nome do parâmetro e parâmetros[i+1] é o valor
+        }
+        return query.getResultList();
+    }
+
+    public E consultarUm(String nomeConsulta, Object... parametros) {
+        List<E> lista = consultar(nomeConsulta, parametros);
+        return lista.isEmpty() ? null : lista.get(0);
+    }
+
     public void fechar() {
         em.close();
     }
+
 }
 
 
