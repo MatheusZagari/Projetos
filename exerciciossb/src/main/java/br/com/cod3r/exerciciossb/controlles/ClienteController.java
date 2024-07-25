@@ -1,6 +1,6 @@
 package br.com.cod3r.exerciciossb.controlles;
 
-import br.com.cod3r.exerciciossb.models.Cliente;
+import br.com.cod3r.exerciciossb.model.entities.Cliente;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
