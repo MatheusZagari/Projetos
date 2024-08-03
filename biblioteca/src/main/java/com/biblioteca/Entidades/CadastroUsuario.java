@@ -1,4 +1,4 @@
-package com.biblioteca.CadastroLivro.Entidades;
+package com.biblioteca.Entidades;
 
 import java.util.Date;
 
@@ -52,6 +52,16 @@ public class CadastroUsuario {
     }
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public Object getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
+
+    public void setName(Object name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setName'");
     }
     
 }

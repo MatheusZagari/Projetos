@@ -1,4 +1,4 @@
-package com.biblioteca.CadastroLivro.Entidades;
+package com.biblioteca.Entidades;
 
 
 import jakarta.persistence.*;
@@ -24,8 +24,8 @@ public class Emprestimo {
     @JoinColumn(name = "livros_id")
     private CadastroLivros bLivros; 
 
-    private LocalDate loanDate;
-    private LocalDate returnDate;
+    private LocalDate emprestimoData;
+    private LocalDate retornoData;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -37,8 +37,8 @@ public class Emprestimo {
         this.id = id;
         this.usuario = usuario;
         this.bLivros = bLivros;
-        this.loanDate = loanDate;
-        this.returnDate = returnDate;
+        this.emprestimoData = loanDate;
+        this.retornoData = returnDate;
         this.status = status;
     }
     
@@ -72,19 +72,19 @@ public class Emprestimo {
     }
 
     public LocalDate getLoanDate() {
-        return loanDate;
+        return emprestimoData;
     }
 
     public void setLoanDate(LocalDate loanDate) {
-        this.loanDate = loanDate;
+        this.emprestimoData = loanDate;
     }
 
     public LocalDate getReturnDate() {
-        return returnDate;
+        return retornoData;
     }
 
     public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+        this.retornoData = returnDate;
     }
 
     public Status getStatus() {

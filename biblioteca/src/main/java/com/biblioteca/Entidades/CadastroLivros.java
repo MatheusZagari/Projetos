@@ -1,9 +1,7 @@
-package com.biblioteca.CadastroLivro.Entidades;
+package com.biblioteca.Entidades;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import com.biblioteca.CadastroLivro.Entidades.Genero;
 
 import jakarta.persistence.*;
 
@@ -76,6 +74,16 @@ public class CadastroLivros {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public Object getGenres() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getGenres'");
+    }
+
+    public void setGenres(Object genres) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setGenres'");
     }
 
 }
