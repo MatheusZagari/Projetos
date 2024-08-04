@@ -29,7 +29,7 @@ public class ProdutoController {
     }
 
     //Consulta Paginada
-    @GetMapping(path = "/paginada/{numeroPagina")
+    @GetMapping(path = "/paginada/{numeroPagina}")
     public Iterable<Produto> obterProdutosPorPagina(@PathVariable int numeroPagina, @PathVariable int qtdePagina) {
         if (qtdePagina >= 5) qtdePagina = 5;
         Pageable page = (Pageable) PageRequest.of(numeroPagina, qtdePagina);

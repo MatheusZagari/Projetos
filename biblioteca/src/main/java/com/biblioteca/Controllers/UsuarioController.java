@@ -9,7 +9,7 @@ import com.biblioteca.Repositorios.RepositorioUsuario;
 import com.biblioteca.Entidades.CadastroUsuario;
 
 @RestController
-@RequestMapping("/api/usuariuo")
+@RequestMapping("/api/usuario")
 public class UsuarioController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     public CadastroUsuario updateUser(@PathVariable Long id, @RequestBody CadastroUsuario userDetails) {
-        CadastroUsuario user = RepositorioUsuario.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        CadastroUsuario user = RepositorioUsuario.findById(id).orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         user.setName(userDetails.getName());
         user.setEmail(userDetails.getEmail());
         return RepositorioUsuario.save(user);
