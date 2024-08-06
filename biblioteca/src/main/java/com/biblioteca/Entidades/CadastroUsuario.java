@@ -12,7 +12,6 @@ public class CadastroUsuario {
 
     private String nome;
     private String email;
-    private Date dataNascimento;
 
     //Construtores
     public CadastroUsuario() {
@@ -23,7 +22,6 @@ public class CadastroUsuario {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.dataNascimento = dataNascimento;
     }    
 
     // Getters and Setters
@@ -47,21 +45,10 @@ public class CadastroUsuario {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
 
-    public Object getName() {
+    public static CadastroUsuario executar(CadastroUsuario usuario) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
-    }
-
-    public void setName(Object name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setName'");
+        throw new UnsupportedOperationException("Unimplemented method 'executar'");
     }
     
 }

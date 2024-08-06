@@ -77,13 +77,10 @@ public class CadastroLivros {
     }
 
     public Object getGenres() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getGenres'");
+        return generos;
     }
 
     public void setGenres(Object genres) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setGenres'");
     }
-
 }

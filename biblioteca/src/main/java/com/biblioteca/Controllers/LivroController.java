@@ -2,43 +2,54 @@ package com.biblioteca.Controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.biblioteca.Entidades.CadastroLivros;
-import com.biblioteca.Repositorios.RepositorioLivros;
-
+import com.biblioteca.userCase.Livro.AtualizarLivro;
+import com.biblioteca.userCase.Livro.BuscarTodosOsLivros;
+import com.biblioteca.userCase.Livro.CadastrarLivro;
+import com.biblioteca.userCase.Livro.DeletarLivroPorId;
 
 @RestController
 @RequestMapping("/api/CadastroLivros")
 public class LivroController {
 
-    @Autowired
-    private RepositorioLivros RepositorioLivros;
+    @RestController
+    @RequestMapping("/api/livros")
+    public class BookController {
 
-    @PostMapping
-    public CadastroLivros createBook(@RequestBody CadastroLivros book) {
-        return RepositorioLivros.save(book);
-    }
+        @Autowired
+        private CadastrarLivro cadastrarLivro;
 
-    @GetMapping
-    public List<CadastroLivros> getAllBooks() {
-        return RepositorioLivros.findAll();
-    }
+        @Autowired
+        private DeletarLivroPorId deletarLivroPorId;
 
-    @PutMapping("/{id}")
     public CadastroLivros updateBook(@PathVariable Long id, @RequestBody CadastroLivros bookDetails) {
-        CadastroLivros book = RepositorioLivros.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
-        book.setTitle(bookDetails.getTitle());
-        book.setAuthor(bookDetails.getAuthor());
-        book.setPublicationYear(bookDetails.getPublicationYear());
-        book.setIsbn(bookDetails.getIsbn());
-        book.setGenres(bookDetails.getGenres());
-        return RepositorioLivros.save(book);
-    }
+        @Autowired
+        private AtualizarLivro atualizarLivro;
 
-    @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable Long id) {
-        RepositorioLivros.deleteById(id);
-    }    
+        @Autowired
+        private BuscarTodosOsLivros buscarTodosOsLivros;
+
+        @PostMapping
+        public CadastroLivros createBook(@RequestBody CadastroLivros livro) {
+            return cadastrarLivro.executar(livro);
+        }
+
+        @GetMapping
+        public List<CadastroLivros> getAllBooks() {
+            return buscarTodosOsLivros.executar();
+        }
+
+        @PutMapping("/{id}")
+        public CadastroLivros updateBook(@PathVariable Long id, @RequestBody CadastroLivros detalheLivro) {
+            return atualizarLivro.executar(id, detalheLivro);
+        }
+
+        @DeleteMapping("/{id}")
+        public void deleteBook(@PathVariable Long id) {
+            deletarLivroPorId.executar(id);
+        }
+    }
 }
