@@ -25,7 +25,6 @@ public class LivroController {
         @Autowired
         private DeletarLivroPorId deletarLivroPorId;
 
-    public CadastroLivros updateBook(@PathVariable Long id, @RequestBody CadastroLivros bookDetails) {
         @Autowired
         private AtualizarLivro atualizarLivro;
 
