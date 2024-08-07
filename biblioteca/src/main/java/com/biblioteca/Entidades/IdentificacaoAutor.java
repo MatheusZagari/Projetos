@@ -1,28 +1,31 @@
 package com.biblioteca.Entidades;
 
-import java.util.Date;
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 @Entity
-public class CadastroUsuario {
+public class IdentificacaoAutor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-    private String email;
 
-    //Construtores
-    public CadastroUsuario() {
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private IdentificacaoAutor autor;
+
+    // Contrutores
+
+    public IdentificacaoAutor() {
 
     }
 
-    public CadastroUsuario(Long id, String nome, String email, Date dataNascimento) {
+    public IdentificacaoAutor(Long id, String nome, IdentificacaoAutor autor) {
         this.id = id;
         this.nome = nome;
-        this.email = email;
-    }    
+        this.autor = autor;
+    }
 
     // Getters and Setters
 
@@ -33,16 +36,21 @@ public class CadastroUsuario {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getEmail() {
-        return email;
+
+    public IdentificacaoAutor getAutor() {
+        return autor;
     }
-    public void setEmail(String email) {
-        this.email = email;
+
+    public void setAutor(IdentificacaoAutor autor) {
+        this.autor = autor;
     }
+
 }

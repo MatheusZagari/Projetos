@@ -4,10 +4,7 @@ package com.biblioteca.Entidades;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Set;
-
-import org.springframework.boot.context.annotation.UserConfigurations;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Emprestimo {
@@ -22,7 +19,7 @@ public class Emprestimo {
 
     @ManyToOne
     @JoinColumn(name = "livros_id")
-    private CadastroLivros bLivros; 
+    private CadastroLivros bLivros;
 
     private LocalDate emprestimoData;
     private LocalDate retornoData;
@@ -38,6 +35,7 @@ public class Emprestimo {
         this.usuario = usuario;
         this.bLivros = bLivros;
         this.emprestimoData = loanDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.retornoData = returnDate;
         this.status = status;
     }

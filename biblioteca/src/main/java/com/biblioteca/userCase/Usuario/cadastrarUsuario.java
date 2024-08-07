@@ -12,7 +12,6 @@ public class cadastrarUsuario {
     @Autowired
     private RepositorioUsuario repositorioUsuario;
 
-
     public CadastroUsuario executar(CadastroUsuario usuario) {
         return repositorioUsuario.save(usuario);
     }
