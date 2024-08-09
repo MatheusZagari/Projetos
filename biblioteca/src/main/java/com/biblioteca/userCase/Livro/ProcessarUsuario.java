@@ -17,11 +17,9 @@ public class ProcessarUsuario {
     @Autowired
     private RepositorioUsuario repositorioUsuario;
 
-    public void executar(String nome, String email) {
-        var usuario = new CadastroUsuario(null, nome, email, new Date());
-        repositorioUsuario.save(usuario);
+    private CadastroLivros livro;
 
-        var livro = new CadastroLivros(null, "Livro 1", "Autor 1", 2021, "978-9789789789789");
+    public void executar(String nome, String email) {
         cadastrarLivro.executar(livro);
     }
 

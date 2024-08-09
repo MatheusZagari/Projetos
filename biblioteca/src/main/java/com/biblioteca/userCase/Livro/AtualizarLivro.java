@@ -18,7 +18,7 @@ public class AtualizarLivro {
         livro.setAuthor(detalheLivro.getAuthor());
         livro.setPublicationYear(detalheLivro.getPublicationYear());
         livro.setIsbn(detalheLivro.getIsbn());
-        livro.setGenres(detalheLivro.getGenres());
+        livro.setGenres(detalheLivro.getGeneros());
         return RepositorioLivros.save(livro);
     }
 }

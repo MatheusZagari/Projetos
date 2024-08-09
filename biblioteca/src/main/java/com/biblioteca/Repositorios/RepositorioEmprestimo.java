@@ -5,8 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.biblioteca.Entidades.Emprestimo;
-import com.biblioteca.Entidades.Emprestimo.Status;
+import com.biblioteca.Entidades.*;
 
 public interface RepositorioEmprestimo extends JpaRepository<Emprestimo, Long> {
     
