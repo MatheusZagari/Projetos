@@ -46,7 +46,7 @@ public class UsuarioController {
         return atualizarUsuario.executar(id, detalheUsuario);
     }
     // DELETE - Deletar usuário
-    // é o metodo utlizado para mapear os usuarios cadastrados e deletar o registro através do id
+    // é o método utilizado para mapear os usuários cadastrados e deletar o registro através do id
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         deletarUsuarioPorId.executar(id);

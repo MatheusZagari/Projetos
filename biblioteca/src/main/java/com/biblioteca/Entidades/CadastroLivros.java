@@ -4,11 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 
 @Entity
-@Data
+@Setter @Getter
 public class CadastroLivros {
 
     @Id

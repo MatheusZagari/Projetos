@@ -14,7 +14,7 @@ public class AtualizarLivro {
     public CadastroLivros executar(Long id, CadastroLivros detalheLivro) {
         CadastroLivros livro = RepositorioLivros.findById(id).orElseThrow(() ->
              new RuntimeException("Livro não encontrado"));
-        livro.setTitle(detalheLivro.getTitle());
+        livro.setGenres(detalheLivro.getTitle());
         livro.setAuthor(detalheLivro.getAuthor());
         livro.setPublicationYear(detalheLivro.getPublicationYear());
         livro.setIsbn(detalheLivro.getIsbn());
