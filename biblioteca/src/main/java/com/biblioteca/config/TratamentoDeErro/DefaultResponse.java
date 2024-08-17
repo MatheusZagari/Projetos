@@ -1,4 +1,4 @@
-package br.com.forrota.http.domain.response;
+package com.biblioteca.config.TratamentoDeErro;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -40,4 +40,5 @@ public class DefaultResponse {
     public static DefaultResponse empty() {
         return new DefaultResponse();
     }
+
 }

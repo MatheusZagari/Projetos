@@ -1,4 +1,4 @@
-package br.com.forrota.exception;
+package com.biblioteca.config.TratamentoDeErro.execption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;

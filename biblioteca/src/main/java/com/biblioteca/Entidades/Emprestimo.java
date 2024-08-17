@@ -2,13 +2,16 @@ package com.biblioteca.Entidades;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Entity
-@Data @ToString @NoArgsConstructor @AllArgsConstructor
+@Data
+@ToString
+@NoArgsConstructor
 public class Emprestimo {
 
     @Id
@@ -27,25 +30,19 @@ public class Emprestimo {
     private LocalDate retornoData;
 
     //Método de Formatação da Data
-
-    /*
     @Enumerated(EnumType.STRING)
     private Status status;
-
     // Construtores
-    
+
     public Emprestimo(Long id, CadastroUsuario usuario, CadastroLivros bLivros, LocalDate loanDate,
-            LocalDate returnDate, Status status) {
+                      LocalDate returnDate, Status status) {
         this.id = id;
         this.usuario = usuario;
         this.bLivros = bLivros;
         this.emprestimoData = loanDate;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.retornoData = returnDate;
         this.status = status;
     }
-    */
-    
 }
 
 

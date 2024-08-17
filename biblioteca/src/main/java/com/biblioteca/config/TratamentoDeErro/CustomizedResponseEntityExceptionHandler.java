@@ -1,13 +1,13 @@
-package br.com.forrota.config.http;
+package com.biblioteca.config.TratamentoDeErro;
 
-import br.com.forrota.exception.BusinessException;
-import br.com.forrota.exception.ResourceNotFoundException;
-import br.com.forrota.http.domain.response.DefaultResponse;
+import com.biblioteca.config.TratamentoDeErro.execption.BusinessException;
+import com.biblioteca.config.TratamentoDeErro.execption.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
@@ -28,10 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static br.com.forrota.commons.StringUtil.isEmpty;
 import static java.util.Objects.isNull;
 import static java.util.Optional.empty;
 import static org.springframework.http.HttpStatus.*;
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 @ControllerAdvice
 @RestController
@@ -88,8 +88,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
 
     @Override
-    protected ResponseEntity<Object> handleExceptionInternal(Exception exception, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        DefaultResponse defaultResponse = createDefaulResponse(exception, status);
+    protected ResponseEntity<Object> handleExceptionInternal(Exception exception, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        DefaultResponse defaultResponse = createDefaulResponse(exception, HttpStatus.resolve(status.value()));
         defaultResponse.setMessage(exception.getMessage());
         return new ResponseEntity<>(defaultResponse, status);
     }
@@ -135,17 +135,11 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex,
-            HttpHeaders headers,
-            HttpStatus status,
-            WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
         List<String> errors = new ArrayList<>();
-
         for (FieldError error : ex.getBindingResult().getFieldErrors())
             errors.add(error.getField() + ": " + error.getDefaultMessage());
-
         for (ObjectError error : ex.getBindingResult().getGlobalErrors())
             errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
 

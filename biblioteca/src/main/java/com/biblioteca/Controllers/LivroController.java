@@ -1,54 +1,45 @@
 package com.biblioteca.Controllers;
 
+import com.biblioteca.Entidades.CadastroLivros;
+import com.biblioteca.userCase.Livro.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.biblioteca.Entidades.CadastroLivros;
-import com.biblioteca.userCase.Livro.AtualizarLivro;
-import com.biblioteca.userCase.Livro.BuscarTodosOsLivros;
-import com.biblioteca.userCase.Livro.CadastrarLivro;
-import com.biblioteca.userCase.Livro.DeletarLivroPorId;
-
 @RestController
-@RequestMapping("/api/CadastroLivros")
+@RequestMapping("/api/livros")
+@RequiredArgsConstructor
 public class LivroController {
+    private final CadastrarLivro cadastrarLivro;
+    private final DeletarLivroPorId deletarLivroPorId;
+    private final AtualizarLivro atualizarLivro;
+    private final BuscarTodosOsLivros buscarTodosOsLivros;
+    private final BuscarLivroByID buscarLivroByID;
 
-    @RestController
-    @RequestMapping("/api/livros")
-    public class BookController {
+    @PostMapping
+    public CadastroLivros createBook(@RequestBody CadastroLivros livro) {
+        return cadastrarLivro.executar(livro);
+    }
 
-        @Autowired
-        private CadastrarLivro cadastrarLivro;
+    // GET - Consulta livro por ID
+    @GetMapping("/{id}")
+    public CadastroLivros buscarLibroById(@PathVariable Long id) {
+        return buscarLivroByID.executar(id);
+    }
 
-        @Autowired
-        private DeletarLivroPorId deletarLivroPorId;
+    @GetMapping
+    public List<CadastroLivros> getAllBooks() {
+        return buscarTodosOsLivros.executar();
+    }
 
-        @Autowired
-        private AtualizarLivro atualizarLivro;
+    @PutMapping("/{id}")
+    public CadastroLivros updateBook(@PathVariable Long id, @RequestBody CadastroLivros detalheLivro) {
+        return atualizarLivro.executar(id, detalheLivro);
+    }
 
-        @Autowired
-        private BuscarTodosOsLivros buscarTodosOsLivros;
-
-        @PostMapping
-        public CadastroLivros createBook(@RequestBody CadastroLivros livro) {
-            return cadastrarLivro.executar(livro);
-        }
-
-        @GetMapping
-        public List<CadastroLivros> getAllBooks() {
-            return buscarTodosOsLivros.executar();
-        }
-
-        @PutMapping("/{id}")
-        public CadastroLivros updateBook(@PathVariable Long id, @RequestBody CadastroLivros detalheLivro) {
-            return atualizarLivro.executar(id, detalheLivro);
-        }
-
-        @DeleteMapping("/{id}")
-        public void deleteBook(@PathVariable Long id) {
-            deletarLivroPorId.executar(id);
-        }
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id) {
+        deletarLivroPorId.executar(id);
     }
 }

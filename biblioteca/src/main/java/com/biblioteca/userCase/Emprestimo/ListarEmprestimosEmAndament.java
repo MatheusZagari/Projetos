@@ -1,18 +1,17 @@
 package com.biblioteca.userCase.Emprestimo;
 
-import java.util.List;
-
+import com.biblioteca.Entidades.Emprestimo;
+import com.biblioteca.Entidades.Status;
+import com.biblioteca.Repositorios.RepositorioEmprestimo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.biblioteca.Entidades.Emprestimo;
-import com.biblioteca.Entidades.Emprestimo.Status;
-import com.biblioteca.Repositorios.RepositorioEmprestimo;
+import java.util.List;
 
 @Component
 public class ListarEmprestimosEmAndament {
-    
+
     @Autowired
     private RepositorioEmprestimo repositorioEmprestimo;
 

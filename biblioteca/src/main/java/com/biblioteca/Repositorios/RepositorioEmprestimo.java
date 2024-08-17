@@ -1,19 +1,19 @@
 package com.biblioteca.Repositorios;
 
-import java.util.List;
-
+import com.biblioteca.Entidades.Emprestimo;
+import com.biblioteca.Entidades.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-import com.biblioteca.Entidades.*;
+import java.util.List;
 
+@Repository
 public interface RepositorioEmprestimo extends JpaRepository<Emprestimo, Long> {
-    
+
     List<Emprestimo> findByStatus(Status status);
 
-    Emprestimo executar(Emprestimo emprestimo);
+    List<Emprestimo> findByUsuarioId(@Param("id") Long id);
 
-    List<Emprestimo> findByAuthorId(@Param("id") Long id);
-   
 }
 
