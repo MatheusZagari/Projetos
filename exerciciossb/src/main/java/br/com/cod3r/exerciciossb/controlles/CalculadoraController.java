@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping (path = "/calculadora")
 public class CalculadoraController {
-    // /calçculadora/somar/10/20
+    // /calculadora/somar/10/20
     @GetMapping(path = "/somar/{a}/{b}")
     public int somar(@PathVariable int a,@PathVariable int b) {
             return a + b;
